@@ -72,13 +72,11 @@ function playGame () {
 
         console.log("");
 
-        /* if on last round but 5 rounds haven't been won/lost
-        due to draws, then decrement round counter*/
-        if (i == 4 && ((humanScore + computerScore) != 5))
-            --i;
     }
     if (humanScore > computerScore)
         console.log("You won more rounds! Congrats!");
-    else
+    else if (computerScore > humanScore)
         console.log("The computer won more rounds! Try again!");
+    else
+        console.log("Draw. Play again!");
 }
