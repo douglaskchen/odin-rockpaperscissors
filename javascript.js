@@ -42,6 +42,9 @@ function getComputerChoice () {
 }
 
 function playRound (humanChoice) {
+    if (humanScore == 5 || computerScore == 5)
+        return;
+    
     let computerChoice = getComputerChoice();
     humanChoice = humanChoice.toLowerCase();
 
