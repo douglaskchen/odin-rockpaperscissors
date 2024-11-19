@@ -1,6 +1,20 @@
 let computerScore = 0;
 let humanScore = 0
-playGame();
+
+const btnRock = document.querySelector("#btnRock");
+btnRock.addEventListener("click", function (){
+    playRound("rock");
+});
+
+const btnPaper = document.querySelector("#btnPaper");
+btnPaper.addEventListener("click", function (){
+    playRound("paper");
+});
+
+const btnScissors = document.querySelector("#btnScissors");
+btnScissors.addEventListener("click", function (){
+    playRound("scissors");
+});
 
 function getComputerChoice () {
     let x = Math.floor(Math.random()* (3));
@@ -12,12 +26,10 @@ function getComputerChoice () {
         return "scissors";
 }
 
-function getHumanChoice () {
-    return prompt("Enter your pick: rock, paper, scissors");
-}
-
-function playRound (humanChoice, computerChoice) {
+function playRound (humanChoice) {
+    let computerChoice = getComputerChoice();
     humanChoice = humanChoice.toLowerCase();
+
     if (humanChoice == "rock"){
         if (computerChoice == "rock"){
             console.log("This round is a draw.");
@@ -62,21 +74,10 @@ function playRound (humanChoice, computerChoice) {
     console.log("You chose: " + humanChoice);
     console.log("Computer score: " + computerScore);
     console.log("Your score: " + humanScore);
-}
+    console.log("");
 
-function playGame () {
-    for (let i = 0; i<5; i++) {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-        playRound(humanChoice, computerChoice);
-
-        console.log("");
-
-    }
-    if (humanScore > computerScore)
-        console.log("You won more rounds! Congrats!");
-    else if (computerScore > humanScore)
-        console.log("The computer won more rounds! Try again!");
-    else
-        console.log("Draw. Play again!");
+    if (humanScore > 4)
+        console.log("You won! Congrats!");
+    else if (computerScore > 4)
+        console.log("The computer won! Try again!");
 }
